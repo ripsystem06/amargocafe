@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amargo Café | Ensenada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cafe: {
+                100: "#F8F4E3",
+                400: "#EBC74F",
+                800: "#2A4B3C",
+                900: "#1A1512",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            animation: {
+              float: "float 3s ease-in-out infinite",
+              "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .bg-hero {
+        background-image: linear-gradient(
+            rgba(26, 21, 18, 0.7),
+            rgba(26, 21, 18, 0.7)
+          ),
+          url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2574&auto=format&fit=crop");
+        background-size: cover;
+        background-position: center;
+      }
+
+      /* --- TÉCNICA DE RECORTE PARA REELS --- */
+      .reel-crop-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 177.77%;
+        overflow: hidden;
+        border-radius: 1rem;
+        background-color: #2a4b3c;
+      }
+
+      .reel-crop-container iframe {
+        position: absolute;
+        top: -15%;
+        left: 0;
+        width: 100%;
+        height: 130%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body class="bg-cafe-900 text-cafe-100 antialiased">
+    <!-- NAV -->
+    <nav
+      class="fixed w-full z-50 bg-cafe-900/90 backdrop-blur-md border-b border-cafe-800"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex-shrink-0">
+            <a href="#" class="text-2xl font-bold text-cafe-400 tracking-wider"
+              >AMARGO.</a
+            >
+          </div>
+
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a
+                href="#inicio"
+                class="hover:text-cafe-400 transition px-3 py-2 rounded-md text-sm font-medium"
+                >Inicio</a
+              >
+              <a
+                href="#experiencia"
+                class="hover:text-cafe-400 transition px-3 py-2 rounded-md text-sm font-medium"
+                >Experiencia</a
+              >
+              <a
+                href="#menu"
+                class="hover:text-cafe-400 transition px-3 py-2 rounded-md text-sm font-medium"
+                >Menú</a
+              >
+              <a
+                href="#reels"
+                class="hover:text-cafe-400 transition px-3 py-2 rounded-md text-sm font-medium"
+                >Galería</a
+              >
+              <a
+                href="#contacto"
+                class="bg-cafe-400 text-cafe-900 hover:bg-cafe-100 transition px-4 py-2 rounded-full text-sm font-bold"
+                >Visítanos</a
+              >
+            </div>
+          </div>
+
+          <div class="-mr-2 flex md:hidden">
+            <button
+              id="mobile-menu-btn"
+              class="inline-flex items-center justify-center p-2 rounded-md text-cafe-100 hover:text-white hover:bg-cafe-800 focus:outline-none"
+            >
+              <i data-lucide="menu"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-cafe-900 border-t border-cafe-800"
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#inicio"
+            class="block px-3 py-2 rounded-md text-base font-medium hover:bg-cafe-800 hover:text-cafe-400"
+            >Inicio</a
+          >
+          <a
+            href="#experiencia"
+            class="block px-3 py-2 rounded-md text-base font-medium hover:bg-cafe-800 hover:text-cafe-400"
+            >Experiencia</a
+          >
+          <a
+            href="#menu"
+            class="block px-3 py-2 rounded-md text-base font-medium hover:bg-cafe-800 hover:text-cafe-400"
+            >Menú</a
+          >
+          <a
+            href="#reels"
+            class="block px-3 py-2 rounded-md text-base font-medium hover:bg-cafe-800 hover:text-cafe-400"
+            >Galería</a
+          >
+          <a
+            href="#contacto"
+            class="block px-3 py-2 rounded-md text-base font-medium text-cafe-400 font-bold"
+            >Visítanos</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION (BOTONES ACTUALIZADOS) -->
+    <section
+      id="inicio"
+      class="bg-hero h-screen flex items-center justify-center text-center px-4"
+    >
+      <div class="max-w-4xl mx-auto space-y-6 animate-fade-in-up">
+        <span
+          class="text-cafe-400 font-semibold tracking-[0.2em] uppercase text-sm"
+          >Ensenada, B.C.</span
+        >
+        <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight">
+          El equilibrio perfecto <br />
+          entre café y diversión
+        </h1>
+        <p class="text-xl text-cafe-100 max-w-2xl mx-auto">
+          Disfruta de bebidas de especialidad, un ambiente acogedor y nuestra
+          amplia colección de juegos de mesa.
+        </p>
+
+        <!-- NUEVOS BOTONES DE ACCIÓN -->
+        <div
+          class="pt-8 flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <!-- Botón WhatsApp -->
+          <a
+            href="https://wa.me/526462489608?text=Hola%20Amargo!%20Quisiera%20reservar%20una%20mesa%20o%20hacer%20un%20pedido."
+            target="_blank"
+            class="w-full sm:w-auto px-8 py-4 bg-cafe-400 text-cafe-900 font-bold rounded-full hover:bg-white transition duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-cafe-400/50"
+          >
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            Reservar / Pedir
+          </a>
+
+          <!-- Botón Google Maps -->
+          <a
+            href="https://maps.app.goo.gl/MVxfYmoqpaVWc6VY7"
+            target="_blank"
+            class="w-full sm:w-auto px-8 py-4 border-2 border-cafe-400 text-cafe-100 font-bold rounded-full hover:bg-cafe-400 hover:text-cafe-900 transition duration-300 flex items-center justify-center gap-2"
+          >
+            <i data-lucide="map-pin" class="w-5 h-5"></i>
+            Cómo llegar
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section id="experiencia" class="py-20 bg-cafe-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+            ¿Por qué Amargo?
+          </h2>
+          <div class="h-1 w-20 bg-cafe-400 mx-auto rounded"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div
+            class="bg-cafe-800/50 p-8 rounded-2xl border border-cafe-800 hover:border-cafe-400 transition duration-300 group"
+          >
+            <div
+              class="w-14 h-14 bg-cafe-800 rounded-full flex items-center justify-center mb-6 text-cafe-400 group-hover:bg-cafe-400 group-hover:text-cafe-900 transition"
+            >
+              <i data-lucide="coffee" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">
+              Café de Especialidad
+            </h3>
+            <p class="text-cafe-100 leading-relaxed">
+              Seleccionamos los mejores granos para ofrecerte desde un espresso
+              intenso hasta lattes creativos y tisanas relajantes.
+            </p>
+          </div>
+
+          <div
+            class="bg-cafe-800/50 p-8 rounded-2xl border border-cafe-800 hover:border-cafe-400 transition duration-300 group"
+          >
+            <div
+              class="w-14 h-14 bg-cafe-800 rounded-full flex items-center justify-center mb-6 text-cafe-400 group-hover:bg-cafe-400 group-hover:text-cafe-900 transition"
+            >
+              <i data-lucide="dices" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">Juegos de Mesa</h3>
+            <p class="text-cafe-100 leading-relaxed">
+              Ven con amigos o familia. Tenemos una ludoteca lista para que
+              pases horas de diversión desconectado de la rutina.
+            </p>
+          </div>
+
+          <div
+            class="bg-cafe-800/50 p-8 rounded-2xl border border-cafe-800 hover:border-cafe-400 transition duration-300 group"
+          >
+            <div
+              class="w-14 h-14 bg-cafe-800 rounded-full flex items-center justify-center mb-6 text-cafe-400 group-hover:bg-cafe-400 group-hover:text-cafe-900 transition"
+            >
+              <i data-lucide="wifi" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">Espacio Coworking</h3>
+            <p class="text-cafe-100 leading-relaxed">
+              ¿Necesitas trabajar? Ofrecemos WiFi de alta velocidad, conexiones
+              cómodas y el ambiente ideal para concentrarte.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENÚ -->
+    <section id="menu" class="relative py-24 bg-cafe-800 overflow-hidden">
+      <div
+        class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-cafe-400/10 rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 -mb-20 -ml-20 w-72 h-72 bg-cafe-400/10 rounded-full blur-3xl"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-12"
+        >
+          <div class="md:w-1/2 text-center md:text-left">
+            <span
+              class="text-cafe-400 font-bold tracking-widest uppercase text-sm"
+              >Nuestro Menú</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
+              Descubre sabores <br />
+              <span class="text-cafe-400">inolvidables</span>
+            </h2>
+            <p class="text-cafe-100 text-lg mb-8 leading-relaxed">
+              Desde clásicos perfectamente extraídos hasta nuestras creaciones
+              de temporada. Explora nuestro menú digital completo y encuentra tu
+              próxima bebida favorita.
+            </p>
+            <a
+              href="https://www.canva.com/design/DAGKejmrobI/SmCUDgpRJ8Yud8_k1uDlsg/view"
+              target="_blank"
+              class="group relative inline-flex items-center gap-3 px-8 py-4 bg-cafe-400 text-cafe-900 font-bold text-lg rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(235,199,79,0.5)] animate-float"
+            >
+              <span class="relative z-10 flex items-center gap-2">
+                <i data-lucide="book-open" class="w-6 h-6"></i>
+                VER MENÚ COMPLETO
+              </span>
+              <div
+                class="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-0"
+              ></div>
+            </a>
+          </div>
+
+          <div class="md:w-1/2 grid grid-cols-2 gap-4">
+            <div class="space-y-4 mt-8">
+              <img
+                src="amargoimg/bebidas.png"
+                class="w-full h-40 object-cover rounded-2xl opacity-80 hover:opacity-100 transition duration-500 hover:scale-105"
+                alt="Latte"
+              />
+              <img
+                src="amargoimg/HIELO.png"
+                class="w-full h-56 object-cover rounded-2xl opacity-80 hover:opacity-100 transition duration-500 hover:scale-105"
+                alt="Frappe"
+              />
+            </div>
+            <div class="space-y-4">
+              <img
+                src="amargoimg/juegomesa.png"
+                class="w-full h-56 object-cover rounded-2xl opacity-80 hover:opacity-100 transition duration-500 hover:scale-105"
+                alt="Matcha"
+              />
+              <img
+                src="amargoimg/emparedado.png"
+                class="w-full h-40 object-cover rounded-2xl opacity-80 hover:opacity-100 transition duration-500 hover:scale-105"
+                alt="Postre"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REELS -->
+    <section id="reels" class="py-20 bg-cafe-900 border-t border-cafe-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <span
+            class="text-cafe-400 font-semibold tracking-wider uppercase text-sm"
+            >Síguenos en @amargo.cafens</span
+          >
+          <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">
+            La vibra de Amargo
+          </h2>
+          <p class="text-cafe-100 max-w-2xl mx-auto">
+            Un poco de lo que vivimos día a día. Café, risas y buenas jugadas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+          <div
+            class="w-full max-w-[350px] shadow-2xl border border-cafe-800 rounded-2xl overflow-hidden"
+          >
+            <div class="reel-crop-container">
+              <iframe
+                src="https://www.instagram.com/reel/DL8hhGwStlb/embed"
+                scrolling="no"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+            </div>
+          </div>
+
+          <div
+            class="w-full max-w-[350px] shadow-2xl border border-cafe-800 rounded-2xl overflow-hidden"
+          >
+            <div class="reel-crop-container">
+              <iframe
+                src="https://www.instagram.com/reel/DMTwO9XyvKy/embed"
+                scrolling="no"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+            </div>
+          </div>
+
+          <div
+            class="w-full max-w-[350px] shadow-2xl border border-cafe-800 rounded-2xl overflow-hidden"
+          >
+            <div class="reel-crop-container">
+              <iframe
+                src="https://www.instagram.com/reel/DQ8AAqWj1d5/embed"
+                scrolling="no"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="https://www.instagram.com/amargo.cafens/"
+            target="_blank"
+            class="inline-flex items-center gap-2 px-6 py-3 border border-cafe-400 text-cafe-400 font-bold rounded-full hover:bg-cafe-400 hover:text-cafe-900 transition duration-300"
+          >
+            <i data-lucide="instagram" class="w-5 h-5"></i>
+            Ver todo el perfil
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      id="contacto"
+      class="bg-cafe-950 border-t border-cafe-900 pt-16 pb-8"
+      style="background-color: #120f0d"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          <div class="space-y-4">
+            <h2 class="text-3xl font-bold text-white">AMARGO.</h2>
+            <p class="text-cafe-100 text-sm">
+              Tu espacio favorito en Ensenada para disfrutar del buen café y los
+              mejores juegos de mesa.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-4 uppercase tracking-wider">
+              Horario
+            </h3>
+            <ul class="text-cafe-100 space-y-2 text-sm">
+              <li class="flex justify-between">
+                <span>Lunes - Viernes:</span>
+                <span class="text-white">8:00 AM - 10:00 PM</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Sábado:</span>
+                <span class="text-white">9:00 AM - 11:00 PM</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Domingo:</span> <span class="text-white">Cerrado</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-4 uppercase tracking-wider">
+              Contacto
+            </h3>
+            <ul class="space-y-4 text-sm">
+              <!-- Link a Google Maps en el texto de dirección -->
+              <li class="flex items-start gap-3 text-cafe-100">
+                <i
+                  data-lucide="map-pin"
+                  class="text-cafe-400 w-5 h-5 flex-shrink-0"
+                ></i>
+                <a
+                  href="https://maps.app.goo.gl/MVxfYmoqpaVWc6VY7"
+                  target="_blank"
+                  class="hover:text-cafe-400 transition"
+                >
+                  Ensenada, Baja California, México.
+                </a>
+              </li>
+
+              <!-- Link a WhatsApp en el footer -->
+              <li class="flex items-center gap-3 text-cafe-100">
+                <i
+                  data-lucide="phone"
+                  class="text-cafe-400 w-5 h-5 flex-shrink-0"
+                ></i>
+                <a
+                  href="https://wa.me/526462489608"
+                  target="_blank"
+                  class="hover:text-cafe-400 transition"
+                >
+                  646 248 9608
+                </a>
+              </li>
+
+              <li class="flex items-center gap-3 text-cafe-100">
+                <i
+                  data-lucide="instagram"
+                  class="text-cafe-400 w-5 h-5 flex-shrink-0"
+                ></i>
+                <a
+                  href="https://www.instagram.com/amargo.cafens/?hl=es"
+                  class="hover:text-cafe-400 transition"
+                  >@amargo.cafens</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-cafe-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-cafe-100"
+        >
+          <p>&copy; 2023 Amargo Café. Todos los derechos reservados.</p>
+          <div class="flex space-x-4 mt-4 md:mt-0">
+            <a href="#" class="hover:text-cafe-400">Aviso de Privacidad</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a
+      href="https://wa.me/526462489608?text=Hola!%20Vengo%20de%20su%20sitio%20web"
+      target="_blank"
+      class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition duration-300 flex items-center justify-center animate-bounce"
+    >
+      <!-- Icono de WhatsApp SVG -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+        ></path>
+      </svg>
+    </a>
+
+    <script>
+      lucide.createIcons();
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.add("hidden");
+        });
+      });
+    </script>
+    <script src="proteccion.js"></script>
+  </body>
+</html>
